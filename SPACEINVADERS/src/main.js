@@ -1,9 +1,12 @@
 import kaboom from "kaboom"
 kaboom()
+
 //pre load for sprite and spritesheets
 loadSprite("player", "img/player.png")
 loadSprite("enemyProjectile", "img/enemyProj.png")
 loadSprite("playerProjectile", "img/playerProj.png")
+loadSprite("logo", "img/space_invaders_logo.png")
+loadSprite("background", "img/spacebackground.jpg")
 
 //scenes
 scene("game", () => {
@@ -64,4 +67,42 @@ scene("game", () => {
         player.move(speed, 0)
     })
 })
-go("game")
+
+
+
+scene("start", () => {
+	
+	const background = add([
+		sprite("background"),
+		pos(0,0),
+		scale(4),
+	])
+	const logo = add([
+		sprite("logo"),
+		pos(450,10),
+		"logo"
+	])
+	const text1 = add([
+		text("Press ENTER to start"),
+		pos(700,450),
+		opacity(1.0)
+	])
+	loop(2, () => {
+		text1.opacity = 1
+		wait(1, () => {
+			text1.opacity = .5
+		})
+	})
+	loop(.1,() => {
+		background.moveTo = (200,50,1)
+	})
+
+    onKeyPress("enter", () => {
+        go("game");
+    })
+
+})
+
+
+go("start");
+

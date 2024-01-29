@@ -7,13 +7,14 @@ loadSprite("enemyProjectile", "img/enemyProj.png")
 loadSprite("playerProjectile", "img/playerProj.png")
 loadSprite("logo", "img/space_invaders_logo.png")
 loadSprite("background", "img/spacebackground.jpg")
+loadSprite("enemy", "img/enemy.png")
 
 //scenes
 scene("game", () => {
     setBackground(25,25,25);
-    
-    
-    let speed = 450;
+
+    let currentSpeed = 250 
+    let speed = 450
     //making an object
     const player = add([
         //sprite
@@ -31,32 +32,48 @@ scene("game", () => {
         //tags
         "player",
     ])
+    let ppj = add([
+        sprite("playerProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(player.pos.x + 30, player.pos.y -15),
+        move(player.pos.y + 10, -700 ),
+        offscreen({destroy : true}),
+        health(1),
+        "PlayerPJ",
+    ])
+    function playerProjFunc(ppj) {
+    ppj = add([
+        sprite("playerProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(player.pos.x + 30, player.pos.y -15),
+        move(player.pos.y + 10, -700 ),
+        offscreen({destroy : true}),
+        health(1),
+        "PlayerPJ",
+    ])}
     onKeyPress("space", () =>{
-        const PPJ = add([
-            sprite("playerProjectile"),
-            scale(3),
-            area(),
-            body(),
-            pos(player.pos.x + 30, player.pos.y),
-            move(player.pos.y + 10, -700),
-            offscreen({destroy : true}),
-            "PlayerPJ",
-        ])
-        
+        playerProjFunc()
     })
-    add([
+
+    const wall1 = add([
         rect(20, height()),
         color(0,0,0),
         pos(550, 0),
         area(),
         body({isStatic : true}),
+        "wall1"
     ])
-    add([
+    const wall2 = add([
         rect(20, height()),
         color(0,0,0),
         pos(1250, 0),
         area(),
         body({isStatic : true}),
+        "wall2"
     ])
 
 
@@ -66,6 +83,43 @@ scene("game", () => {
     onKeyDown("right", () =>{
         player.move(speed, 0)
     })
+    const enemy = add([
+        sprite("enemy"),
+        pos(700, 50),
+        scale(5),
+        color(rand(1,255),rand(1,255),rand(1,255)),
+        area(),
+        body(),
+        health(3),
+        "enemy"
+    ])
+    let x = wall1.pos.x
+    loop(0.1, () => {
+        enemy.moveTo(x,50,currentSpeed)
+    })
+
+    onCollide("enemy", "PlayerPJ", () => {
+        enemy.hurt(1)
+        ppj.hurt(1)
+    })
+
+    ppj.on("death", () => {
+        destroy(ppj)
+    })
+
+    enemy.on("death", () => {
+        destroy(enemy)
+    })
+
+
+
+    onCollide("enemy", "wall2", () => {
+        x = wall1.pos.x
+    })
+    onCollide("enemy","wall1", () => {
+        x = wall2.pos.x
+    })
+    
 })
 
 
@@ -105,4 +159,3 @@ scene("start", () => {
 
 
 go("start");
-

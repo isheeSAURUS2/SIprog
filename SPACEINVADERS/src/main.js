@@ -84,6 +84,7 @@ scene("game", () => {
     onKeyDown("right", () => {
         player.move(speed, 0)
     })
+    let score = 0;
     const enemy = add([
         sprite("enemy"),
         pos(700, 50),
@@ -275,34 +276,302 @@ scene("game", () => {
 
     enemy.on("death", () => {
         destroy(enemy)
+        score++
     })
     enemy1.on("death", () => {
         destroy(enemy1)
+        score++
     })
     enemy2.on("death", () => {
         destroy(enemy2)
+        score++
     })
     enemy3.on("death", () => {
         destroy(enemy3)
+        score++
     })
     enemy4.on("death", () => {
         destroy(enemy4)
+        score++
     })
     enemy5.on("death", () => {
         destroy(enemy5)
+        score++
     })
     enemy6.on("death", () => {
         destroy(enemy6)
+        score++
     })
     enemy7.on("death", () => {
         destroy(enemy7)
+        score++
     })
     enemy8.on("death", () => {
         destroy(enemy8)
+        score++
     })
     enemy9.on("death", () => {
         destroy(enemy9)
+        score++
     })
+    let epj = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy.pos.x - 30, enemy.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj1 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy1.pos.x - 30, enemy1.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj2 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy2.pos.x - 30, enemy2.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj3 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy3.pos.x - 30, enemy3.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj4 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy4.pos.x - 30, enemy4.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj5 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy5.pos.x - 30, enemy5.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj6 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy6.pos.x - 30, enemy6.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj7 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy7.pos.x - 30, enemy7.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj8 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy8.pos.x - 30, enemy8.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    let epj9 = add([
+        sprite("enemyProjectile"),
+        scale(3),
+        area(),
+        body(),
+        pos(enemy9.pos.x - 30, enemy9.pos.y - 15),
+        move(player.pos.y + 10, -700),
+        offscreen({ destroy: true }),
+        health(1),
+        "EnemyPJ",
+    ]) 
+    while(score <= 4){
+        function enemyProjFunc5(epj5) {
+            epj5 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy5.pos.x - 30, enemy5.pos.y - 15),
+                move(enemy5.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc6(epj6) {
+            epj6 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy6.pos.x - 30, enemy6.pos.y - 15),
+                move(enemy6.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc7(epj7) {
+            epj7 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy7.pos.x - 30, enemy7.pos.y - 15),
+                move(enemy7.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc8(epj8) {
+            epj8 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy8.pos.x - 30, enemy8.pos.y - 15),
+                move(enemy8.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc9(epj9) {
+            epj9 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy9.pos.x - 30, enemy9.pos.y - 15),
+                move(enemy9.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        loop(rand(1, 2), ()=>{
+            enemyProjFunc5();
+            enemyProjFunc6();
+            enemyProjFunc7();
+            enemyProjFunc8();
+            enemyProjFunc9();
+        })
+    }
+    while(score >= 5){
+        function enemyProjFunc(epj) {
+            epj = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy.pos.x - 30, enemy.pos.y - 15),
+                move(enemy.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc1(epj1) {
+            epj1 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy1.pos.x - 30, enemy1.pos.y - 15),
+                move(enemy1.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc2(epj2) {
+            epj2 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy2.pos.x - 30, enemy2.pos.y - 15),
+                move(enemy2.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc3(epj3) {
+            epj3 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy3.pos.x - 30, enemy3.pos.y - 15),
+                move(enemy3.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        function enemyProjFunc4(epj4) {
+            epj4 = add([
+                sprite("enemyProjectile"),
+                scale(3),
+                area(),
+                body(),
+                pos(enemy4.pos.x - 30, enemy4.pos.y - 15),
+                move(enemy4.pos.y + 10, -700),
+                offscreen({ destroy: true }),
+                health(1),
+                "EnemyPJ",
+            ])
+        }
+        loop(rand(1, 2), ()=>{
+            enemyProjFunc();
+            enemyProjFunc1();
+            enemyProjFunc2();
+            enemyProjFunc3();
+            enemyProjFunc4();
+        })
+    }
 
 
 
